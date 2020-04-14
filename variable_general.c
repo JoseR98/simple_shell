@@ -24,11 +24,11 @@ void free_commands(char **commands)
  *
  *
  */
-void exit_free(char *buffer, char **commands)
+void exit_free(char *buffer, char **commands, int error)
 {
 	free(buffer);
 	free_commands(commands);
-	exit(0);
+	exit(error);
 }
 /**
  *
