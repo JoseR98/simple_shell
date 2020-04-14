@@ -1,6 +1,6 @@
 #include "holberton.h"
 
-int val_execute_command(char **commands, char *buffer, char **var, char **env)
+int val_execute_command(char **commands, char *buffer, char **env)
 {
 	int c_found = 0;
 
@@ -10,13 +10,13 @@ int val_execute_command(char **commands, char *buffer, char **var, char **env)
 		exit(EXIT_SUCCESS);
 	}
 	/* compare and execute exit*/
-	else if (_strcmp(commands[0], var[0]) == 0)
+	else if (_strcmp(commands[0], "exit") == 0)
 		exit_free(buffer, commands);
 	/* compare and execute env */
-	else if (_strcmp(commands[0], var[1]) == 0)
+	else if (_strcmp(commands[0], "env") == 0)
 		show_env(commands, buffer, env);
 	/* compare and execute clear */
-	else if (_strcmp(commands[0], var[2]) == 0)
+	else if (_strcmp(commands[0], "clear") == 0)
 		_clear(buffer, commands);
 	/* validation command in each file and execute */
 	else if (access(commands[0], X_OK) == 0)
