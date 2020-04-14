@@ -5,7 +5,7 @@
  *
  *
  */
-int prompt(char *argv[], char *env[], char *var[])
+int prompt(char *argv[], char *env[])
 {
 	char *buffer = NULL, **commands;
 	int num_command = 0, status, c_found = 0;
@@ -26,7 +26,7 @@ int prompt(char *argv[], char *env[], char *var[])
 			perror("Fork");
 		if (pid == 0)	/** validate if it's child*/
 		{
-			c_found = val_execute_command(commands, buffer, var, env);
+			c_found = val_execute_command(commands, buffer, env);
 			if (c_found == -1)
 				c_not_found(commands, buffer, argv, num_command);
 		}
@@ -36,7 +36,7 @@ int prompt(char *argv[], char *env[], char *var[])
 			if (commands == NULL)
 				free_all(buffer, commands);
 			/* free buffer, commands and execute exit father */
-			else if (_strcmp(commands[0], var[0]) == 0)
+			else if (_strcmp(commands[0], "exit") == 0)
 				exit_free(buffer, commands);
 			else
 				free_all(buffer, commands);
