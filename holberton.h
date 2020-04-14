@@ -12,13 +12,13 @@
 #define USER "$ "
 
 /** prompt */
-int prompt(char *argv[], char *env[], char *var[]);
+int prompt(char *argv[], char *env[]);
 /** function that saves commands in an array*/
 char **save_commands(char *buffer);
 /**own strtok function*/
 char *own_strtok(char *str, const char *delim, int *index);
 /**validation and execute commands**/
-int val_execute_command(char **commands, char *buffer, char **var, char **env);
+int val_execute_command(char **commands, char *buffer, char **env);
 /** free double pointer */
 void free_commands(char **commands);
 /* exit prompt */
