@@ -11,7 +11,7 @@ int val_execute_command(char **commands, char *buffer, char **env)
 	}
 	/* compare and execute exit*/
 	else if (_strcmp(commands[0], "exit") == 0)
-		exit_free(buffer, commands);
+		exit_free_child(buffer, commands);
 	/* compare and execute env */
 	else if (_strcmp(commands[0], "env") == 0)
 		show_env(commands, buffer, env);
@@ -28,4 +28,16 @@ int val_execute_command(char **commands, char *buffer, char **env)
 			return (-1);
 	}
 	return (0);
+}
+/**
+ *
+ *
+ *
+ *
+ */
+void exit_free_child(char *buffer, char **commands)
+{
+	free(buffer);
+	free_commands(commands);
+	exit(EXIT_SUCCESS);
 }
