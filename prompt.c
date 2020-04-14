@@ -12,6 +12,8 @@ int prompt(char *argv[], char *env[])
 	size_t size = 0;
 	ssize_t ret_getl;
 	pid_t pid;
+	int error = 0;
+	int *err = &error;
 	(void)argv;
 
 	signal(SIGINT, ctrlc__handler);	/**Signal for ctrl + c*/
@@ -33,11 +35,13 @@ int prompt(char *argv[], char *env[])
 		else	/** its parent*/
 		{
 			wait(&status);
+			if (WIFEXITED(status))
+				*err = WEXITSTATUS(status); 
 			if (commands == NULL)
 				free_all(buffer, commands);
 			/* free buffer, commands and execute exit father */
 			else if (_strcmp(commands[0], "exit") == 0)
-				exit_free(buffer, commands);
+				exit_free(buffer, commands, *err);
 			else
 				free_all(buffer, commands);
 		}
