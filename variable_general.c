@@ -1,4 +1,8 @@
 #include "holberton.h"
+/**
+ * 
+ * 
+ */
 void free_commands(char **commands)
 {
 	int i;
@@ -24,7 +28,7 @@ void exit_free(char *buffer, char **commands)
 {
 	free(buffer);
 	free_commands(commands);
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 /**
  *
