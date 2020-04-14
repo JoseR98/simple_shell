@@ -3,7 +3,7 @@
 .B JNS
 - command interpreter(Shell)
 .SH SYNOPSIS
-.B Interactive mode 
+.B Interactive mode
 .TP
 .B ./JNS
 .TP
@@ -23,8 +23,7 @@ echo “/bin/ls” | ./JNS
 .TP
 echo “ls -l” | ./JNS
 .SH Description
-JNS is a UNIX-like command interpreter, based on the dash operation. Based on this, JNS initially reads a 
-command as input, looks for this command in its environment, analyzes if this command exists and finally executes the command with its respective arguments.
+JNS is a UNIX-like command interpreter, based on the dash operation. Based on this, JNS initially reads a command as input, looks for this command in its environment, analyzes if this command exists and finally executes the command with its respective arguments.
 .SH Builtin commands
 .B Exit
 - Ends the shell by returning an output state
