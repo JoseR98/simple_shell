@@ -1,5 +1,11 @@
 #include "holberton.h"
-
+/**
+ * val_execute_command - free and execute gerenal commands
+ * @commands: double pointer array we created to store all commands
+ * @buffer: buffer array created by new line
+ * @env: environment variables from your login
+ * Return: -1 if any failures happen
+ */
 int val_execute_command(char **commands, char *buffer, char **env)
 {
 	int c_found = 0;
@@ -30,10 +36,11 @@ int val_execute_command(char **commands, char *buffer, char **env)
 	return (0);
 }
 /**
- *
- *
- *
- *
+ * exit_free_child - free and execute exit process child
+ * @buffer: the commands from the terminal
+ * @commands: double pointer array we created to store all commands
+ * from the prompt
+ * Return: void
  */
 void exit_free_child(char *buffer, char **commands)
 {
