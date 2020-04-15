@@ -19,7 +19,7 @@ int prompt(char *argv[], char *env[])
 	while ((ret_getl = getline(&buffer, &size, stdin)))
 	{
 		if (ret_getl == EOF)
-			end_of_file(buffer);
+			end_of_file(buffer, *exit_stat);
 		num_command++;
 		commands = save_commands(buffer); /**function tha splits buffer in words*/
 		pid = fork();
