@@ -55,10 +55,10 @@ int _strlen(char *s)
  *
  *
  */
-void end_of_file(char *buffer)
+void end_of_file(char *buffer, int exit_stat)
 {
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "\n", 1);
 	free(buffer);
-	exit(EXIT_SUCCESS);
+	exit(exit_stat);
 }
