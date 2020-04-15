@@ -1,26 +1,24 @@
 #include "holberton.h"
 /**
- *
- *
- *
- *
+ * prompt - display the prompt
+ * @argv: argument vector
+ * @env: environment variables from your login
+ * Return: -1 if any failures happen
  */
 int prompt(char *argv[], char *env[])
 {
-	char *buffer = NULL, **commands;
-	int num_command = 0, status, c_found = 0, err_stat = 0;
+	char *buffer = NULL, **commands = NULL;
+	int num_com = 0, status, c_found = 0, err_stat = 0, *exit_stat = &err_stat;
 	size_t size = 0;
 	ssize_t ret_getl;
 	pid_t pid;
-	int *exit_stat = &err_stat;
-	(void)argv;
 
 	signal(SIGINT, ctrlc__handler);	/**Signal for ctrl + c*/
 	while ((ret_getl = getline(&buffer, &size, stdin)))
 	{
 		if (ret_getl == EOF)
 			end_of_file(buffer, *exit_stat);
-		num_command++;
+		num_com++;
 		commands = save_commands(buffer); /**function tha splits buffer in words*/
 		pid = fork();
 		if (pid == -1)	/** validate if process creation works*/
@@ -29,7 +27,7 @@ int prompt(char *argv[], char *env[])
 		{
 			c_found = val_execute_command(commands, buffer, env);
 			if (c_found == -1)
-				c_not_found(commands, buffer, argv, num_command);
+				c_not_found(commands, buffer, argv, num_com);
 		}
 		else	/** its parent*/
 		{
@@ -38,14 +36,13 @@ int prompt(char *argv[], char *env[])
 				*exit_stat = WEXITSTATUS(status);
 			if (commands == NULL)
 				free_all(buffer, commands);
-			/* free buffer, commands and execute exit father */
-			else if (_strcmp(commands[0], "exit") == 0)
+			else if (_strcmp(commands[0], "exit") == 0) /*free and execute exit father*/
 				exit_free(buffer, commands, *exit_stat);
 			else
 				free_all(buffer, commands);
 		}
-		buffer = NULL;
 		size = 0;
+		buffer = NULL;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, USER, 2);
 	}
