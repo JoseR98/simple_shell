@@ -1,15 +1,16 @@
 #include "holberton.h"
 /**
- *
- *
- *
+ * main - basic shell recreation
+ * @argc: argument count
+ * @argv: argument vector
+ * @env: environment variables
+ * Return: 0 on exit, -1 if any failures happen
  */
 int main(int argc, char *argv[], char *env[])
 {
 	int num;
 	(void)argc;
-	/* general commands */
-	/*            */
+
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, USER, 2);
 	num = prompt(argv, env);
