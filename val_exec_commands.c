@@ -15,6 +15,8 @@ int val_execute_command(char **commands, char *buffer, char **env)
 		free(buffer);
 		exit(EXIT_SUCCESS);
 	}
+	else if (_strcmp(commands[0], ".") == 0)
+		void_point(buffer, commands);
 	/* compare and execute exit*/
 	else if (_strcmp(commands[0], "exit") == 0)
 		exit_free_child(buffer, commands);
@@ -43,6 +45,19 @@ int val_execute_command(char **commands, char *buffer, char **env)
  * Return: void
  */
 void exit_free_child(char *buffer, char **commands)
+{
+	free(buffer);
+	free_commands(commands);
+	exit(EXIT_SUCCESS);
+}
+/**
+ * void_point - void the point character when is alone
+ * @buffer: the commands from the terminal
+ * @commands: double pointer array we created to store all commands
+ * from the prompt
+ * Return: void
+ */
+void void_point(char *buffer, char **commands)
 {
 	free(buffer);
 	free_commands(commands);
