@@ -37,6 +37,10 @@ void c_not_found(char **commands, char *buffer, char **argv, int num_command);
 void end_of_file(char *buffer, int exit_stat);
 /* free all */
 void free_all(char *buffer, char **commands);
+/* void point */
+void void_point(char *buffer, char **commands);
+/* fork fail */
+void fork_fail(char *buffer, char **commands);
 
 /** FUNCTIONS AUXILIAR */
 /* copies a string.*/
