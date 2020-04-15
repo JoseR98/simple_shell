@@ -22,7 +22,7 @@ int prompt(char *argv[], char *env[])
 		commands = save_commands(buffer); /**function tha splits buffer in words*/
 		pid = fork();
 		if (pid == -1)	/** validate if process creation works*/
-			perror("Fork");
+			fork_fail(buffer, commands);
 		if (pid == 0)	/** validate if it's child*/
 		{
 			c_found = val_execute_command(commands, buffer, env);
@@ -47,4 +47,17 @@ int prompt(char *argv[], char *env[])
 			write(STDOUT_FILENO, USER, 2);
 	}
 	return (-1);
+}
+/**
+ * fork_fail - funtion that handles a fork fail
+ * @buffer: buffer array created by new line
+ * @commands: double pointer array we created to store all commands
+ * Return: void
+ */
+void fork_fail(char *buffer, char **commands)
+{
+	perror("Error:");
+	free(buffer);
+	free_commands(commands);
+	exit(EXIT_FAILURE);
 }
