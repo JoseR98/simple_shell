@@ -52,8 +52,10 @@ int _strlen(char *s)
 	return (i);
 }
 /**
- *
- *
+ * end_of_file - function to handle ctrl+c interrupt signal
+ * @buffer: buffer array created by new line
+ * @exit_stat: number of status exit
+ * Return: void
  */
 void end_of_file(char *buffer, int exit_stat)
 {
