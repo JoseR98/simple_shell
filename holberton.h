@@ -34,7 +34,7 @@ void ctrlc__handler(int sig);
 /* commands not found */
 void c_not_found(char **commands, char *buffer, char **argv, int num_command);
 /* end of file */
-void end_of_file(char *buffer);
+void end_of_file(char *buffer, int exit_stat);
 /* free all */
 void free_all(char *buffer, char **commands);
 
