@@ -24,7 +24,7 @@ void free_commands(char **commands);
 /* exit prompt */
 void exit_free(char *buffer, char **commands, int error);
 /**         */
-void exit_free_child(char *buffer, char **commands);
+int exit_free_child(char *buffer, char **commands);
 /* show environment */
 void show_env(char **commands, char *bufer, char **env);
 /* clear screen */
@@ -41,6 +41,8 @@ void free_all(char *buffer, char **commands);
 void void_point(char *buffer, char **commands);
 /* fork fail */
 void fork_fail(char *buffer, char **commands);
+/* exit arguments */
+int exit_arg(char **commands);
 
 /** FUNCTIONS AUXILIAR */
 /* copies a string.*/
@@ -49,6 +51,8 @@ int _strcmp(char *s1, char *s2);
 char *_strncpy(char *dest, char *src, int n);
 /* length of a string */
 int _strlen(char *s);
+/* convert a string to an integer */
+int _atoi(char *s);
 
 /**FUNCTIONS ENVIRONMENT */
 int concat_commands(char **commands, char *buffer, char **env);
