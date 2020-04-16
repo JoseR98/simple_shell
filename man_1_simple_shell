@@ -32,7 +32,7 @@ JNS is a UNIX-like command interpreter, based on the dash operation. Based on th
 - Prints environment variables and their values with "name = value" notation
 .TP
 .B Clear
-- clean the terminal screen
+- Clean the terminal screen
 .SH Commands
 .B Absolute path
 .TP
