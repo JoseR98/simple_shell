@@ -16,7 +16,7 @@ int prompt(char *argv[], char *env[]);
 /** function that saves commands in an array*/
 char **save_commands(char *buffer);
 /**own strtok function*/
-char *own_strtok(char *str, const char *delim, int *index);
+char *own_strtok(char *str, const char *delim);
 /**validation and execute commands**/
 int val_execute_command(char **commands, char *buffer, char **env);
 /** free double pointer */
