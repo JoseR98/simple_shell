@@ -17,6 +17,8 @@ int val_execute_command(char **commands, char *buffer, char **env)
 	}
 	else if (_strcmp(commands[0], ".") == 0)
 		void_point(buffer, commands);
+	else if (_strcmp(commands[0], "..") == 0)
+		void_point(buffer, commands);
 	/* compare and execute exit*/
 	else if (_strcmp(commands[0], "exit") == 0)
 	{
@@ -127,4 +129,3 @@ int _atoi(char *s)
 	}
 	return (num * sign);
 }
-
