@@ -61,4 +61,3 @@ void fork_fail(char *buffer, char **commands)
 	free_commands(commands);
 	exit(EXIT_FAILURE);
 }
-
