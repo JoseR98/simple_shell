@@ -14,7 +14,8 @@ char **save_commands(char *buffer)
 	/* numbers delimiters */
 	for (w = 0; buffer[w] != '\0'; w++)
 	{
-		if (buffer[w] != ' ' && buffer[w] != '\t')
+		if (buffer[w] != ' ' && buffer[w] != '\t' && buffer[w] != '\a' &&
+		buffer[w] != '\r')
 		{
 			if (buffer[w + 1] == ' ' || buffer[w + 1] == '\0')
 				num_words++;
@@ -26,7 +27,7 @@ char **save_commands(char *buffer)
 	if (com == NULL)
 		return (NULL);
 	i = 0;
-	temp = strtok(buffer, " \t");
+	temp = strtok(buffer, " \t\a\r");
 	while (temp != NULL)
 	{
 		com[i] = malloc(_strlen(temp) + 1);
@@ -36,7 +37,7 @@ char **save_commands(char *buffer)
 			return (NULL);
 		}
 		_strncpy(com[i], temp, _strlen(temp) + 1);
-		temp = strtok(NULL, " \t");
+		temp = strtok(NULL, " \t\a\r");
 		i++;
 	}
 	com[i] = NULL;
