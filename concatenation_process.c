@@ -15,7 +15,7 @@ int concat_commands(char **commands, char *buffer, char **env)
 	while (path_dir[i] != NULL)
 	{
 		if (access(path_dir[i], X_OK) == 0)
-			execve(path_dir[i], commands, NULL);
+			execve(path_dir[i], commands, env);
 		i++;
 	}
 	if (path_dir[i] ==  NULL)

@@ -34,7 +34,7 @@ int val_execute_command(char **commands, char *buffer, char **env)
 		_clear(buffer, commands);
 	/* validation command in each file and execute */
 	else if (access(commands[0], X_OK) == 0)
-		execve(commands[0], commands, NULL);
+		execve(commands[0], commands, env);
 	else
 	{
 		c_found = concat_commands(commands, buffer, env);
