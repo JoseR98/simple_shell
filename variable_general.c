@@ -48,7 +48,10 @@ void show_env(char **commands, char *buffer, char **env)
 	char **get;
 
 	for (get = env; *get != 0; get++)
-		printf("%s\n", *get);
+	{
+		write(STDOUT_FILENO, *get, _strlen(*get));
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	free(buffer);
 	free_commands(commands);
 	exit(EXIT_SUCCESS);
