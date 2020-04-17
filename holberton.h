@@ -51,6 +51,8 @@ char *_strncpy(char *dest, char *src, int n);
 int _strlen(char *s);
 /* convert a string to an integer */
 int _atoi(char *s);
+/* function that converts a number to string */
+char *own_itoa(int num_command);
 
 /**FUNCTIONS ENVIRONMENT */
 int concat_commands(char **commands, char *buffer, char **env);
